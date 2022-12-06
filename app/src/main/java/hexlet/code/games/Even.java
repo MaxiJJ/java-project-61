@@ -1,15 +1,10 @@
-package hexlet.code;
+package hexlet.code.games;
 
 import hexlet.code.Cli;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
-public class Games {
-
-    public static void calculate() {
-
-    }
+public class Even {
 
     public static void even() {
         int countForWin = 3;
@@ -44,10 +39,7 @@ public class Games {
                 break;
             }
 
-            if(countForWin == countCorrectAnswer) {
-                System.out.println("Congratulations, " + Cli.getName() + "!");
-                break;
-            }
+
         }
     }
 }

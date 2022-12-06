@@ -1,19 +1,19 @@
 package hexlet.code.games;
 
 import hexlet.code.Cli;
+import hexlet.code.Engine;
 
 import java.util.Scanner;
 
 public class Even {
 
     public static void even() {
-        int countForWin = 3;
         int countCorrectAnswer = 0;
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Answer 'yes' if the number is even, otherwise answer 'no'.");
 
-        for (int i = 0; i < countForWin; i++) {
+        for (int i = 0; i < Engine.getCountForWin(); i++) {
 
             int question = (int) (Math.random() * 10);
 
@@ -38,8 +38,6 @@ public class Even {
                 System.out.println("Let's try again, " + Cli.getName() + "!");
                 break;
             }
-
-
         }
     }
 }

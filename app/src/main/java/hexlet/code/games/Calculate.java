@@ -16,6 +16,8 @@ public class Calculate {
 
         Scanner scanner = new Scanner(System.in);
 
+        int correctAnswer = 0;
+
 
         System.out.println("What is the result of the expression?");
 
@@ -30,6 +32,7 @@ public class Calculate {
             if (a + b == sc || a - b == sc || a * b == sc) {
                 System.out.println("Your answer: " + sc);
                 System.out.println("Correct!");
+                correctAnswer = Engine.getCountCorrectAnswer() + 1;
             } else if (operation.equals("+") && a + b != sc) {
                 System.out.println("Your answer: " + sc);
                 System.out.println("'" + sc + "'" + " is wrong answer ;(. Correct answer was " + "'" + (a + b) + "'");
@@ -44,13 +47,12 @@ public class Calculate {
                 break;
             }
 
-            if (Engine.getCountForWin() == Engine.getCountCorrectAnswer()) {
+            if (Engine.getCountForWin() == correctAnswer) {
                 System.out.println("Congratulations, " + Cli.getName() + "!");
                 break;
             }
             Engine.endGame();
         }
-
     }
 
     public static char getRandomGenerator() {

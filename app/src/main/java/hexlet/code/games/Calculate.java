@@ -1,0 +1,59 @@
+package hexlet.code.games;
+
+import hexlet.code.Cli;
+import hexlet.code.Engine;
+
+import java.util.Random;
+import java.util.Scanner;
+import java.util.stream.IntStream;
+
+public class Calculate {
+
+    static Random randomGenerator = new Random();
+    static String operators = "+-*";
+
+    public static void calculate() {
+
+        Scanner scanner = new Scanner(System.in);
+
+
+        System.out.println("What is the result of the expression?");
+
+        for (int i = 0; i < Engine.getCountForWin(); i++) {
+            int a = (int) (Math.random() * 20);
+            int b = (int) (Math.random() * 20);
+            String operation = String.valueOf(Calculate.getRandomGenerator());
+
+            System.out.println("Question: " + a + " " + operation + " " + b);
+            int sc = scanner.nextInt();
+
+            if (a + b == sc || a - b == sc || a * b == sc) {
+                System.out.println("Your answer: " + sc);
+                System.out.println("Correct!");
+            } else if (operation.equals("+") && a + b != sc) {
+                System.out.println("Your answer: " + sc);
+                System.out.println("'" + sc + "'" + " is wrong answer ;(. Correct answer was " + "'" + (a + b) + "'");
+                break;
+            } else if (operation.equals("-") && a - b != sc) {
+                System.out.println("Your answer: " + sc);
+                System.out.println("'" + sc + "'" + " is wrong answer ;(. Correct answer was " + "'" + (a - b) + "'");
+                break;
+            } else if (operation.equals("*") && a * b != sc) {
+                System.out.println("Your answer: " + sc);
+                System.out.println("'" + sc + "'" + " is wrong answer ;(. Correct answer was " + "'" + (a * b) + "'");
+                break;
+            }
+
+            if (Engine.getCountForWin() == Engine.getCountCorrectAnswer()) {
+                System.out.println("Congratulations, " + Cli.getName() + "!");
+                break;
+            }
+            Engine.endGame();
+        }
+
+    }
+
+    public static char getRandomGenerator() {
+        return operators.charAt(randomGenerator.nextInt(operators.length()));
+    }
+}

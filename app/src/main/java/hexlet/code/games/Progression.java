@@ -10,8 +10,9 @@ public class Progression {
     public static void progression() {
 
         Scanner scanner = new Scanner(System.in);
+        int correctAnswer = 0;
+
         System.out.println("What number is missing in the progression?");
-        int correctAnswer;
 
         for (int i = 0; i < Engine.getCountForWin(); i++) {
 
@@ -47,18 +48,14 @@ public class Progression {
 
             if (hiddenElement.equals(sc)) {
                 System.out.println("Correct!");
-                correctAnswer = Engine.getCountCorrectAnswer() + 1;
+                correctAnswer++;
             } else {
                 System.out.println("'" + sc + "'" + " is wrong answer ;(. Correct answer was " + "'" + hiddenElement + "'");
                 break;
             }
-
-            if (Engine.getCountForWin() == correctAnswer) {
-                System.out.println("Congratulations, " + Cli.getName() + "!");
-                break;
-            }
         }
-        Engine.endGame();
-
+        if (Engine.getCountForWin() == correctAnswer) {
+            Engine.endGame();
+        }
     }
 }

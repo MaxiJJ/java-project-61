@@ -39,5 +39,9 @@ public class Even {
                 break;
             }
         }
+
+        if (Engine.getCountForWin() == countCorrectAnswer) {
+            Engine.endGame();
+        }
     }
 }

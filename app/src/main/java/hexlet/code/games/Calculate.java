@@ -32,7 +32,7 @@ public class Calculate {
             if (a + b == sc || a - b == sc || a * b == sc) {
                 System.out.println("Your answer: " + sc);
                 System.out.println("Correct!");
-                correctAnswer = Engine.getCountCorrectAnswer() + 1;
+                correctAnswer++;
             } else if (operation.equals("+") && a + b != sc) {
                 System.out.println("Your answer: " + sc);
                 System.out.println("'" + sc + "'" + " is wrong answer ;(. Correct answer was " + "'" + (a + b) + "'");
@@ -46,11 +46,9 @@ public class Calculate {
                 System.out.println("'" + sc + "'" + " is wrong answer ;(. Correct answer was " + "'" + (a * b) + "'");
                 break;
             }
+        }
 
-            if (Engine.getCountForWin() == correctAnswer) {
-                System.out.println("Congratulations, " + Cli.getName() + "!");
-                break;
-            }
+        if (Engine.getCountForWin() == correctAnswer) {
             Engine.endGame();
         }
     }

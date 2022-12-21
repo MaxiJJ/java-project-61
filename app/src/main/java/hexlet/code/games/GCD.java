@@ -9,7 +9,7 @@ public class GCD {
 
     public static void gcd() {
 
-        int correctAnswer;
+        int correctAnswer = 0;
 
         Scanner scanner = new Scanner(System.in);
 
@@ -26,17 +26,15 @@ public class GCD {
             if(gcdByEuclidsAlgorithm(a, b) == sc) {
                 System.out.println("Your answer: " + sc);
                 System.out.println("Correct!");
-                correctAnswer = Engine.getCountCorrectAnswer() + 1;
+                correctAnswer++;
             } else {
                 System.out.println("Your answer: " + sc);
                 System.out.println("'" + sc + "'" + " is wrong answer ;(. Correct answer was " + "'" + (gcdByEuclidsAlgorithm(a,b)) + "'");
                 break;
             }
+        }
 
-            if (Engine.getCountForWin() == correctAnswer) {
-                System.out.println("Congratulations, " + Cli.getName() + "!");
-                break;
-            }
+        if (Engine.getCountForWin() == correctAnswer) {
             Engine.endGame();
         }
     }

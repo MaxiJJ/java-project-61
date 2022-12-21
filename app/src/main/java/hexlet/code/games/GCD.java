@@ -1,6 +1,5 @@
 package hexlet.code.games;
 
-import hexlet.code.Cli;
 import hexlet.code.Engine;
 
 import java.util.Scanner;
@@ -15,7 +14,7 @@ public class GCD {
 
         System.out.println("Find the greatest common divisor of given numbers.");
 
-        for(int i = 0; i < Engine.getCountForWin(); i++) {
+        for (int i = 0; i < Engine.getCountForWin(); i++) {
 
             int a = (int) (1 + Math.random() * 100);
             int b = (int) (1 + Math.random() * 100);
@@ -23,13 +22,14 @@ public class GCD {
             System.out.println("Question: " + a + " " + b);
             int sc = scanner.nextInt();
 
-            if(gcdByEuclidsAlgorithm(a, b) == sc) {
+            if (gcdByEuclidsAlgorithm(a, b) == sc) {
                 System.out.println("Your answer: " + sc);
                 System.out.println("Correct!");
                 correctAnswer++;
             } else {
                 System.out.println("Your answer: " + sc);
-                System.out.println("'" + sc + "'" + " is wrong answer ;(. Correct answer was " + "'" + (gcdByEuclidsAlgorithm(a,b)) + "'");
+                System.out.println("'" + sc + "'" + " is wrong answer ;(. Correct answer was " + "'" +
+                        (gcdByEuclidsAlgorithm(a, b)) + "'");
                 break;
             }
         }

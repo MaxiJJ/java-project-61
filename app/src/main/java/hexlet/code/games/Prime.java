@@ -1,10 +1,7 @@
 package hexlet.code.games;
 
-import hexlet.code.Cli;
 import hexlet.code.Engine;
-
 import java.math.BigInteger;
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Prime {

@@ -1,8 +1,6 @@
 package hexlet.code.games;
 
-import hexlet.code.Cli;
 import hexlet.code.Engine;
-
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -50,7 +48,8 @@ public class Progression {
                 System.out.println("Correct!");
                 correctAnswer++;
             } else {
-                System.out.println("'" + sc + "'" + " is wrong answer ;(. Correct answer was " + "'" + hiddenElement + "'");
+                System.out.println("'" + sc + "'" + " is wrong answer ;(. Correct answer was "
+                        + "'" + hiddenElement + "'");
                 break;
             }
         }

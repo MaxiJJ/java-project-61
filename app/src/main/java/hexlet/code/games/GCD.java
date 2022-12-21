@@ -28,8 +28,8 @@ public class GCD {
                 correctAnswer++;
             } else {
                 System.out.println("Your answer: " + sc);
-                System.out.println("'" + sc + "'" + " is wrong answer ;(. Correct answer was " + "'" +
-                        (gcdByEuclidsAlgorithm(a, b)) + "'");
+                System.out.println("'" + sc + "'" + " is wrong answer ;(. Correct answer was " + "'"
+                        + (gcdByEuclidsAlgorithm(a, b)) + "'");
                 break;
             }
         }

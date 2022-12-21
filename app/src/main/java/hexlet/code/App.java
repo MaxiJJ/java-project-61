@@ -1,9 +1,6 @@
 package hexlet.code;
 
-import hexlet.code.games.Calculate;
-import hexlet.code.games.Even;
-import hexlet.code.games.GCD;
-import hexlet.code.games.Progression;
+import hexlet.code.games.*;
 
 import java.util.Scanner;
 
@@ -21,6 +18,7 @@ public class App {
             System.out.println("3 - Calc");
             System.out.println("4 - GCD");
             System.out.println("5 - Progression");
+            System.out.println("6 - Prime");
             System.out.println("0 - Exit");
             switch (sc.nextInt()) {
                 case 1:
@@ -46,6 +44,11 @@ public class App {
                     System.out.println(greet);
                     Cli.welcomeGamer();
                     Progression.progression();
+                    break;
+                case 6:
+                    System.out.println(greet);
+                    Cli.welcomeGamer();
+                    Prime.prime();
                     break;
                 case 0:
                     break;

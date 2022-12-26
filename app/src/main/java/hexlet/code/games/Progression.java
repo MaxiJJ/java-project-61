@@ -3,6 +3,7 @@ package hexlet.code.games;
 import hexlet.code.Cli;
 import hexlet.code.Engine;
 
+import javax.xml.stream.events.EndDocument;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -16,9 +17,10 @@ public class Progression {
 
         for (int i = 0; i < Engine.getCountForWin(); i++) {
 
-            int firstNumberOfProgression = (int) (Math.random() * 10);
-            int stepProgression = (int) (1 + Math.random() * 10);
-            int amountElementsOfProgression = (int) (5 + Math.random() * 5);
+            int firstNumberOfProgression = (int) (Math.random() * Engine.RANGE_OF_RANDOM_EVEN_AND_PROGRESSION);
+            int stepProgression = (int) (1 + Math.random() * Engine.RANGE_OF_RANDOM_EVEN_AND_PROGRESSION);
+            int amountElementsOfProgression = (int) (Engine.RANGE_OF_RANDOM_PROGRESSION
+                    + Math.random() * Engine.RANGE_OF_RANDOM_PROGRESSION);
 
             int[] arrayProgression = new int[amountElementsOfProgression];
 

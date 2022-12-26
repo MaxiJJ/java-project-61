@@ -17,8 +17,8 @@ public class GCD {
 
         for (int i = 0; i < Engine.getCountForWin(); i++) {
 
-            int a = (int) (1 + Math.random() * 100);
-            int b = (int) (1 + Math.random() * 100);
+            int a = (int) (1 + Math.random() * Engine.RANGE_OF_RANDOM_GCD);
+            int b = (int) (1 + Math.random() * Engine.RANGE_OF_RANDOM_GCD);
 
             System.out.println("Question: " + a + " " + b);
             int sc = scanner.nextInt();

@@ -15,7 +15,7 @@ public class Even {
 
         for (int i = 0; i < Engine.getCountForWin(); i++) {
 
-            int question = (int) (Math.random() * 10);
+            int question = (int) (Math.random() * Engine.RANGE_OF_RANDOM_EVEN_AND_PROGRESSION);
 
             System.out.println("Question: " + question);
 

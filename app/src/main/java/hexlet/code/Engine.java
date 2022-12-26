@@ -7,6 +7,13 @@ public class Engine {
 
     public static final int RANGE_OF_RANDOM_CALC = 20;
 
+    public static final int RANGE_OF_RANDOM_EVEN_AND_PROGRESSION = 10;
+
+    public static final int RANGE_OF_RANDOM_PROGRESSION = 5;
+
+    public static final int RANGE_OF_RANDOM_GCD = 100;
+
+    public static final int RANGE_OF_RANDOM_PRIME = 50;
     public static void endGame() {
         System.out.println("Congratulations, " + Cli.getName() + "!");
     }

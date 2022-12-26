@@ -2,6 +2,7 @@ package hexlet.code.games;
 
 import hexlet.code.Cli;
 import hexlet.code.Engine;
+
 import java.util.Random;
 import java.util.Scanner;
 
@@ -27,7 +28,15 @@ public class Calculate {
             System.out.println("Question: " + a + " " + operation + " " + b);
             int sc = scanner.nextInt();
 
-            if (a + b == sc || a - b == sc || a * b == sc) {
+            if (operation.equals("+") && a + b == sc) {
+                System.out.println("Your answer: " + sc);
+                System.out.println("Correct!");
+                correctAnswer++;
+            } else if (operation.equals("-") && a - b == sc) {
+                System.out.println("Your answer: " + sc);
+                System.out.println("Correct!");
+                correctAnswer++;
+            } else if (operation.equals("*") && a * b == sc) {
                 System.out.println("Your answer: " + sc);
                 System.out.println("Correct!");
                 correctAnswer++;

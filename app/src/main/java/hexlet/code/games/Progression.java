@@ -2,8 +2,6 @@ package hexlet.code.games;
 
 import hexlet.code.Cli;
 import hexlet.code.Engine;
-
-import javax.xml.stream.events.EndDocument;
 import java.util.Arrays;
 import java.util.Scanner;
 

@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class Calculate {
 
-    private static final Random randomGenerator = new Random();
+    private static final Random RANDOM_GENERATOR = new Random();
 
     public static void calculate() {
 
@@ -64,6 +64,6 @@ public class Calculate {
 
     public static char getRandomGenerator() {
         String operators = "+-*";
-        return operators.charAt(randomGenerator.nextInt(operators.length()));
+        return operators.charAt(RANDOM_GENERATOR.nextInt(operators.length()));
     }
 }

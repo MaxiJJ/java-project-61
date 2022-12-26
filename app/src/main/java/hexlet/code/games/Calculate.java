@@ -1,5 +1,6 @@
 package hexlet.code.games;
 
+import hexlet.code.Cli;
 import hexlet.code.Engine;
 import java.util.Random;
 import java.util.Scanner;
@@ -33,14 +34,17 @@ public class Calculate {
             } else if (operation.equals("+") && a + b != sc) {
                 System.out.println("Your answer: " + sc);
                 System.out.println("'" + sc + "'" + " is wrong answer ;(. Correct answer was " + "'" + (a + b) + "'");
+                System.out.println("Let's try again, " + Cli.getName() + "!");
                 break;
             } else if (operation.equals("-") && a - b != sc) {
                 System.out.println("Your answer: " + sc);
                 System.out.println("'" + sc + "'" + " is wrong answer ;(. Correct answer was " + "'" + (a - b) + "'");
+                System.out.println("Let's try again, " + Cli.getName() + "!");
                 break;
             } else if (operation.equals("*") && a * b != sc) {
                 System.out.println("Your answer: " + sc);
                 System.out.println("'" + sc + "'" + " is wrong answer ;(. Correct answer was " + "'" + (a * b) + "'");
+                System.out.println("Let's try again, " + Cli.getName() + "!");
                 break;
             }
         }

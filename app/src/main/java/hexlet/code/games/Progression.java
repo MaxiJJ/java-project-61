@@ -1,5 +1,6 @@
 package hexlet.code.games;
 
+import hexlet.code.Cli;
 import hexlet.code.Engine;
 
 import java.util.Arrays;
@@ -52,6 +53,7 @@ public class Progression {
             } else {
                 System.out.println("'" + sc + "'" + " is wrong answer ;(. Correct answer was "
                         + "'" + hiddenElement + "'");
+                System.out.println("Let's try again, " + Cli.getName() + "!");
                 break;
             }
         }

@@ -1,6 +1,7 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
+
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -38,7 +39,8 @@ public class Progression {
 
             array[random] = hiddenElement.replace(hiddenElement, "..");
 
-            System.out.println("Question: " + Arrays.toString(array));
+            System.out.println("Question: " + Arrays.toString(array).replace("[", "")
+                    .replace("]", "").replaceAll(",", ""));
 
             String sc = scanner.nextLine();
 

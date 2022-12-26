@@ -15,14 +15,13 @@ public class Calculate {
         Scanner scanner = new Scanner(System.in);
 
         int correctAnswer = 0;
-        int rangeOfRandom = 20;
 
 
         System.out.println("What is the result of the expression?");
 
         for (int i = 0; i < Engine.getCountForWin(); i++) {
-            int a = (int) (Math.random() * rangeOfRandom);
-            int b = (int) (Math.random() * rangeOfRandom);
+            int a = (int) (Math.random() * Engine.RANGE_OF_RANDOM_CALC);
+            int b = (int) (Math.random() * Engine.RANGE_OF_RANDOM_CALC);
             String operation = String.valueOf(Calculate.getRandomGenerator());
 
             System.out.println("Question: " + a + " " + operation + " " + b);

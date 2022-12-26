@@ -1,5 +1,6 @@
 package hexlet.code.games;
 
+import hexlet.code.Cli;
 import hexlet.code.Engine;
 
 import java.util.Scanner;
@@ -30,6 +31,7 @@ public class GCD {
                 System.out.println("Your answer: " + sc);
                 System.out.println("'" + sc + "'" + " is wrong answer ;(. Correct answer was " + "'"
                         + (gcdByEuclidsAlgorithm(a, b)) + "'");
+                System.out.println("Let's try again, " + Cli.getName() + "!");
                 break;
             }
         }

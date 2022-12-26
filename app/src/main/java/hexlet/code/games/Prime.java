@@ -1,5 +1,6 @@
 package hexlet.code.games;
 
+import hexlet.code.Cli;
 import hexlet.code.Engine;
 import java.math.BigInteger;
 import java.util.Scanner;
@@ -29,9 +30,11 @@ public class Prime {
                 correctAnswer++;
             } else if (sc.equals("yes") && !probablePrime) {
                 System.out.println("'" + sc + "'" + " is wrong answer ;(. Correct answer was " + "'" + "no" + "'");
+                System.out.println("Let's try again, " + Cli.getName() + "!");
                 break;
             } else if (sc.equals("no") && probablePrime) {
                 System.out.println("'" + sc + "'" + " is wrong answer ;(. Correct answer was " + "'" + "yes" + "'");
+                System.out.println("Let's try again, " + Cli.getName() + "!");
                 break;
             }
         }

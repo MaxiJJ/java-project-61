@@ -14,6 +14,8 @@ public class App {
         boolean isWrongAnswer;
         String greet = "Welcome to the Brain Games!";
 
+        final int CASE_CALC = 3;
+
         do {
             isWrongAnswer = false;
             System.out.println("Please enter the game number and press Enter.");
@@ -34,7 +36,7 @@ public class App {
                     Cli.welcomeGamer();
                     Even.even();
                     break;
-                case 3:
+                case CASE_CALC:
                     System.out.println(greet);
                     Cli.welcomeGamer();
                     Calculate.calculate();

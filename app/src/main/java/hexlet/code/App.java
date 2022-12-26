@@ -58,7 +58,7 @@ public class App {
                     break;
 
                 default:
-                    System.out.println("choose from 0 to 4");
+                    System.out.println("choose from 0 to 6");
                     isWrongAnswer = true;
             }
         } while (isWrongAnswer);

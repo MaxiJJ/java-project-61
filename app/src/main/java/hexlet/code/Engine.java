@@ -2,8 +2,8 @@ package hexlet.code;
 
 public class Engine {
 
-    private static int countForWin = 3;
-    private static int countCorrectAnswer = 0;
+    private static final int countForWin = 3;
+    private static final int countCorrectAnswer = 0;
 
     public static void endGame() {
         System.out.println("Congratulations, " + Cli.getName() + "!");

@@ -14,6 +14,11 @@ public class App {
         boolean isWrongAnswer;
         String greet = "Welcome to the Brain Games!";
 
+        final int caseCalc = 3;
+        final int caseGCD = 4;
+        final int caseProgression = 5;
+        final int casePrime = 6;
+
         do {
             isWrongAnswer = false;
             System.out.println("Please enter the game number and press Enter.");
@@ -34,22 +39,22 @@ public class App {
                     Cli.welcomeGamer();
                     Even.even();
                     break;
-                case 3:
+                case caseCalc:
                     System.out.println(greet);
                     Cli.welcomeGamer();
                     Calculate.calculate();
                     break;
-                case 4:
+                case caseGCD:
                     System.out.println(greet);
                     Cli.welcomeGamer();
                     GCD.gcd();
                     break;
-                case 5:
+                case caseProgression:
                     System.out.println(greet);
                     Cli.welcomeGamer();
                     Progression.progression();
                     break;
-                case 6:
+                case casePrime:
                     System.out.println(greet);
                     Cli.welcomeGamer();
                     Prime.prime();
@@ -58,7 +63,7 @@ public class App {
                     break;
 
                 default:
-                    System.out.println("choose from 0 to 4");
+                    System.out.println("choose from 0 to 6");
                     isWrongAnswer = true;
             }
         } while (isWrongAnswer);

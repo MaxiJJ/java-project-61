@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Cli {
 
-    static String name;
+    private static String name;
 
     public static void welcomeGamer() {
         System.out.print("May I have your name? ");

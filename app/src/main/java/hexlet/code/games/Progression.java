@@ -1,5 +1,6 @@
 package hexlet.code.games;
 
+import hexlet.code.Cli;
 import hexlet.code.Engine;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -14,9 +15,10 @@ public class Progression {
 
         for (int i = 0; i < Engine.getCountForWin(); i++) {
 
-            int firstNumberOfProgression = (int) (Math.random() * 10);
-            int stepProgression = (int) (1 + Math.random() * 10);
-            int amountElementsOfProgression = (int) (5 + Math.random() * 5);
+            int firstNumberOfProgression = (int) (Math.random() * Engine.RANGE_OF_RANDOM_EVEN_AND_PROGRESSION);
+            int stepProgression = (int) (1 + Math.random() * Engine.RANGE_OF_RANDOM_EVEN_AND_PROGRESSION);
+            int amountElementsOfProgression = (int) (Engine.RANGE_OF_RANDOM_PROGRESSION
+                    + Math.random() * Engine.RANGE_OF_RANDOM_PROGRESSION);
 
             int[] arrayProgression = new int[amountElementsOfProgression];
 
@@ -38,7 +40,8 @@ public class Progression {
 
             array[random] = hiddenElement.replace(hiddenElement, "..");
 
-            System.out.println("Question: " + Arrays.toString(array));
+            System.out.println("Question: " + Arrays.toString(array).replace("[", "")
+                    .replace("]", "").replaceAll(",", ""));
 
             String sc = scanner.nextLine();
 
@@ -50,6 +53,7 @@ public class Progression {
             } else {
                 System.out.println("'" + sc + "'" + " is wrong answer ;(. Correct answer was "
                         + "'" + hiddenElement + "'");
+                System.out.println("Let's try again, " + Cli.getName() + "!");
                 break;
             }
         }

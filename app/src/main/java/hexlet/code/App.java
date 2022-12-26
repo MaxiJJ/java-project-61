@@ -14,7 +14,10 @@ public class App {
         boolean isWrongAnswer;
         String greet = "Welcome to the Brain Games!";
 
-        final int CASE_CALC = 3;
+        final int caseCalc = 3;
+        final int caseGCD = 4;
+        final int caseProgression = 5;
+        final int casePrime = 6;
 
         do {
             isWrongAnswer = false;
@@ -36,22 +39,22 @@ public class App {
                     Cli.welcomeGamer();
                     Even.even();
                     break;
-                case CASE_CALC:
+                case caseCalc:
                     System.out.println(greet);
                     Cli.welcomeGamer();
                     Calculate.calculate();
                     break;
-                case 4:
+                case caseGCD:
                     System.out.println(greet);
                     Cli.welcomeGamer();
                     GCD.gcd();
                     break;
-                case 5:
+                case caseProgression:
                     System.out.println(greet);
                     Cli.welcomeGamer();
                     Progression.progression();
                     break;
-                case 6:
+                case casePrime:
                     System.out.println(greet);
                     Cli.welcomeGamer();
                     Prime.prime();

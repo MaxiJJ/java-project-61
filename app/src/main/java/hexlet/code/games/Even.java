@@ -7,11 +7,17 @@ import java.util.Scanner;
 
 public class Even {
 
+    private static final String RULES = "Answer 'yes' if the number is even, otherwise answer 'no'.";
+    private static final String POSITIVE_ANSWER = "yes";
+    private static final String NEGATIVE_ANSWER = "no";
+
+
+
     public static void even() {
         int countCorrectAnswer = 0;
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Answer 'yes' if the number is even, otherwise answer 'no'.");
+        System.out.println(RULES);
 
         for (int i = 0; i < Engine.getCountForWin(); i++) {
 
@@ -21,20 +27,22 @@ public class Even {
 
             String sc = scanner.nextLine();
 
-            if (question % 2 == 0 && sc.equals("yes")) {
+            if (isEven(question) && sc.equals(POSITIVE_ANSWER)) {
                 System.out.println("Your answer: yes");
                 System.out.println("Correct!");
                 countCorrectAnswer++;
-            } else if (question % 2 != 0 && sc.equals("no")) {
+            } else if (!isEven(question) && sc.equals(NEGATIVE_ANSWER)) {
                 System.out.println("Your answer: no");
                 System.out.println("Correct!");
                 countCorrectAnswer++;
-            } else if (question % 2 == 0 && !sc.equals("yes")) {
-                System.out.println("'" + sc + "'" + " is wrong answer ;(. Correct answer was " + "'yes'.");
+            } else if (isEven(question) && !sc.equals(POSITIVE_ANSWER)) {
+                System.out.println("'" + sc + "'" + " is wrong answer ;(. Correct answer was "
+                        + "'" + POSITIVE_ANSWER + "'.");
                 System.out.println("Let's try again, " + Cli.getName() + "!");
                 break;
-            } else if (question % 2 != 0 && !sc.equals("no")) {
-                System.out.println("'" + sc + "'" + " is wrong answer ;(. Correct answer was " + "'yes'.");
+            } else if (!isEven(question) && !sc.equals(NEGATIVE_ANSWER)) {
+                System.out.println("'" + sc + "'" + " is wrong answer ;(. Correct answer was "
+                        + "'" + NEGATIVE_ANSWER + "'.");
                 System.out.println("Let's try again, " + Cli.getName() + "!");
                 break;
             }
@@ -43,5 +51,9 @@ public class Even {
         if (Engine.getCountForWin() == countCorrectAnswer) {
             Engine.endGame();
         }
+    }
+
+    public static boolean isEven(int question) {
+        return question % 2 == 0;
     }
 }

@@ -2,6 +2,11 @@ package hexlet.code;
 
 public class Engine {
 
+
+    public static void startGame(String rules, String question, String answer) {
+
+    }
+
     private static final int COUNT_FOR_WIN = 3;
     private static final int COUNT_CORRECT_ANSWER = 0;
 

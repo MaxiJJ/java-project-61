@@ -26,7 +26,7 @@ public class Calculate {
             int number2 = HelpfulUtils.getRandomInt(HelpfulUtils.getDefaultMax());
             char operation = HelpfulUtils.getRandomOperation("+-*");
             questionsAndAnswers[i][0] = number1 + " " + operation + " " + number2;
-            questionsAndAnswers[i][0] = calc(number1, number2, operation);
+            questionsAndAnswers[i][1] = calc(number1, number2, operation);
         }
         String description = "What is the result of the expression?";
         Engine.startGame(questionsAndAnswers, description);

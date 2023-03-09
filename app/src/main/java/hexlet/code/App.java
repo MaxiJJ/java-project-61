@@ -35,7 +35,7 @@ public class App {
             System.out.println("0 - Exit");
             switch (sc.nextInt()) {
                 case GREET:
-                    Greet.greeting();
+                    Cli.greeting();
                     break;
                 case EVEN:
                     Even.startGame();

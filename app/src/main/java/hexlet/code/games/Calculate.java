@@ -1,7 +1,6 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
-import hexlet.code.Greet;
 import hexlet.code.HelpfulUtils;
 
 public class Calculate {
@@ -20,19 +19,17 @@ public class Calculate {
     }
 
     public static void startGame() {
-        Greet.greeting();
-        System.out.println("What is the result of the expression?");
-        String[] questions = new String[HelpfulUtils.getQuantityRounds()];
-        String[] answers = new String[HelpfulUtils.getQuantityRounds()];
+        String[][] questionsAndAnswers = new String[Engine.getQuantityRounds()][Engine.getOneQuestionOneAnswer()];
 
-        for (int i = 0; i < HelpfulUtils.getQuantityRounds(); i++) {
-            int number1 = HelpfulUtils.getRandomInt();
-            int number2 = HelpfulUtils.getRandomInt();
+        for (int i = 0; i < Engine.getQuantityRounds(); i++) {
+            int number1 = HelpfulUtils.getRandomInt(HelpfulUtils.getDefaultMax());
+            int number2 = HelpfulUtils.getRandomInt(HelpfulUtils.getDefaultMax());
             char operation = HelpfulUtils.getRandomOperation("+-*");
-            questions[i] = "Question: " + number1 + " " + operation + " " + number2;
-            answers[i] = calc(number1, number2, operation);
+            questionsAndAnswers[i][0] = number1 + " " + operation + " " + number2;
+            questionsAndAnswers[i][0] = calc(number1, number2, operation);
         }
-        Engine.startGame(questions, answers);
+        String description = "What is the result of the expression?";
+        Engine.startGame(questionsAndAnswers, description);
     }
 
 }

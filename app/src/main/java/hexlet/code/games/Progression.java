@@ -1,63 +1,50 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
-import hexlet.code.Greet;
 import hexlet.code.HelpfulUtils;
-
-import java.util.Arrays;
-import java.util.Random;
 
 public class Progression {
 
-    private static final int ARRAY = 10;
+    private static final int ELEMENTS_IN_PROGRESSION = 10;
 
-    public static int[] getSequence() {
-        int diff = getRandomInt(ARRAY);
-        if (diff == 0) {
-            diff = diff + 1;
-        }
-
-        int[] sequence = new int[ARRAY];
-        sequence[0] = HelpfulUtils.getRandomInt();
-        char operation = HelpfulUtils.getRandomOperation("+-*");
-        for (int i = 0; i < sequence.length; i++) {
+    public static String[] getSequence(int startingNumber, int diff, char operation, int length) {
+        String[] strSequence = new String[length];
+        int[] sequence = new int[length];
+        sequence[0] = startingNumber;
+        for (int i = 1; i < sequence.length; i++) {
             if (operation == '-') {
                 sequence[i] = sequence[i - 1] - diff;
             } else if (operation == '+') {
                 sequence[i] = sequence[i - 1] + diff;
             }
         }
-        return sequence;
+        for (int j = 0; j < strSequence.length; j++) {
+            strSequence[j] = String.valueOf(sequence[j]);
+        }
+        return strSequence;
     }
 
-    public static int getRandomInt(int limit) {
-        Random randomInt = new Random();
-        return randomInt.nextInt(limit);
-    }
-
-    public static String sequenceWithX(int[] sequence, int x) {
-        String toReplace = " " + sequence[x] + " ";
-        String numbers = Arrays.toString(sequence);
-        numbers = numbers.replace(",", "")
-                .replace("[", " ")
-                .replace("]", " ")
-                .replace(toReplace, " .. ");
-        return ("Question" + numbers);
+    public static String seqWithHiddenElement(String[] sequence, int hiddenElement) {
+        sequence[hiddenElement] = "..";
+        String numberWithHiddenElement = String.join(" ", sequence);
+        return numberWithHiddenElement;
     }
 
     public static void startGame() {
-        Greet.greeting();
-        System.out.println("What number is missing in the progression?");
-        String[] questions = new String[HelpfulUtils.getQuantityRounds()];
-        String[] answers = new String[HelpfulUtils.getQuantityRounds()];
+        String[][] questionsAndAnswers = new String[Engine.getQuantityRounds()][Engine.getOneQuestionOneAnswer()];
 
-        for (int i = 0; i < HelpfulUtils.getQuantityRounds(); i++) {
-            int[] seq = getSequence();
-            int x = Math.abs(getRandomInt(seq.length - 1));
-            questions[i] = sequenceWithX(seq, x);
-            answers[i] = Integer.toString(seq[x]);
+        for (int i = 0; i < Engine.getQuantityRounds(); i++) {
+            int diff = HelpfulUtils.getRandomInt(ELEMENTS_IN_PROGRESSION);
+            diff = (diff == 0) ? diff : (diff + 1);
+            int numberOfStarting = HelpfulUtils.getRandomInt(HelpfulUtils.getDefaultMax());
+            char operation = HelpfulUtils.getRandomOperation("+-*");
+            String[] sequence = getSequence(numberOfStarting, diff, operation, ELEMENTS_IN_PROGRESSION);
+            int hiddenElement = Math.abs(HelpfulUtils.getRandomInt(sequence.length - 1));
+            questionsAndAnswers[i][1] = sequence[hiddenElement];
+            questionsAndAnswers[i][0] = seqWithHiddenElement(sequence, hiddenElement);
         }
-        Engine.startGame(questions, answers);
+        String description = "What number is missing in the progression?";
+        Engine.startGame(questionsAndAnswers, description);
     }
 
 }

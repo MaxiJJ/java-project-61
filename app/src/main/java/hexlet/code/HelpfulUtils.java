@@ -4,17 +4,15 @@ import java.util.Random;
 
 public class HelpfulUtils {
 
-    private static final int DEFAULT = 100;
+    private static final int DEFAULT_MAX = 100;
 
-    private static final int QUANTITY_ROUNDS = 3;
-
-    public static int getQuantityRounds() {
-        return QUANTITY_ROUNDS;
+    public static int getDefaultMax() {
+        return DEFAULT_MAX;
     }
 
-    public static int getRandomInt() {
+    public static int getRandomInt(int limit) {
         Random randomInt = new Random();
-        return randomInt.nextInt(DEFAULT);
+        return randomInt.nextInt(limit);
     }
 
     public static char getRandomOperation(String s) {
@@ -23,18 +21,4 @@ public class HelpfulUtils {
         return s.charAt(randomOperation);
     }
 
-    public static boolean checkAnswer(String answer, String result) {
-        if (result.equals(answer)) {
-            return true;
-        } else {
-            System.out.println("'" + answer + "' is wrong answer ;(. Correct answer was '" + result + "'.");
-            fail();
-            return false;
-        }
-    }
-
-    public static void fail() {
-        Greet.tryAgain();
-        System.exit(0);
-    }
 }

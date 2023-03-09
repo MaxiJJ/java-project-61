@@ -1,34 +1,24 @@
 package hexlet.code;
 
+import java.util.Scanner;
+
 public class Engine {
 
 
-    public static void startGame(String rules, String question, String answer) {
+    public static void startGame(String[] questions, String[] results) {
+        Scanner scanner = new Scanner(System.in);
+        String[] answers = new String[HelpfulUtils.getQuantityRounds()];
 
-    }
+        for (int i = 0; i < HelpfulUtils.getQuantityRounds(); i++) {
+            System.out.println(questions[i]);
+            System.out.println("Your answer: ");
+            answers[i] = scanner.nextLine();
 
-    private static final int COUNT_FOR_WIN = 3;
-    private static final int COUNT_CORRECT_ANSWER = 0;
-
-    public static final int RANGE_OF_RANDOM_CALC = 20;
-
-    public static final int RANGE_OF_RANDOM_EVEN_AND_PROGRESSION = 10;
-
-    public static final int RANGE_OF_RANDOM_PROGRESSION = 5;
-
-    public static final int RANGE_OF_RANDOM_GCD = 100;
-
-    public static final int RANGE_OF_RANDOM_PRIME = 50;
-    public static void endGame() {
-        System.out.println("Congratulations, " + Cli.getName() + "!");
-    }
-
-    public static int getCountForWin() {
-        return COUNT_FOR_WIN;
-    }
-
-    public static int getCountCorrectAnswer() {
-        return COUNT_CORRECT_ANSWER;
+            if (HelpfulUtils.checkAnswer(answers[i], results[i])) {
+                System.out.println("Correct!");
+            }
+        }
+        Greet.awesomePlayer();
     }
 
 }

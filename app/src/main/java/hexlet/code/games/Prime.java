@@ -1,46 +1,35 @@
 package hexlet.code.games;
 
-import hexlet.code.Cli;
 import hexlet.code.Engine;
-
-import java.math.BigInteger;
-import java.util.Scanner;
+import hexlet.code.Greet;
+import hexlet.code.HelpfulUtils;
 
 public class Prime {
-    public static void prime() {
 
-        Scanner scanner = new Scanner(System.in);
-        int correctAnswer = 0;
+    public static boolean isPrime(int num) {
+        if (num <= 1) {
+            return false;
+        }
 
-        System.out.println("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
-
-        for (int i = 0; i < Engine.getCountForWin(); i++) {
-            int prime = (int) (2 + Math.random() * Engine.RANGE_OF_RANDOM_PRIME);
-            BigInteger bg = BigInteger.valueOf(prime);
-            boolean probablePrime = bg.isProbablePrime((int) Math.log(prime));
-
-            System.out.println("Question: " + prime);
-            String sc = scanner.nextLine();
-            System.out.println("Your answer: " + sc);
-
-            if (sc.equals("yes") && probablePrime) {
-                System.out.println("Correct!");
-                correctAnswer++;
-            } else if (sc.equals("no") && !probablePrime) {
-                System.out.println("Correct!");
-                correctAnswer++;
-            } else if (sc.equals("yes") && !probablePrime) {
-                System.out.println("'" + sc + "'" + " is wrong answer ;(. Correct answer was " + "'" + "no" + "'");
-                System.out.println("Let's try again, " + Cli.getName() + "!");
-                break;
-            } else if (sc.equals("no") && probablePrime) {
-                System.out.println("'" + sc + "'" + " is wrong answer ;(. Correct answer was " + "'" + "yes" + "'");
-                System.out.println("Let's try again, " + Cli.getName() + "!");
-                break;
+        for (int i = 2; i <= num / 2; i++) {
+            if ((num % 2) == 0) {
+                return false;
             }
         }
-        if (Engine.getCountForWin() == correctAnswer) {
-            Engine.endGame();
+        return false;
+    }
+
+    public static void startGame() {
+        Greet.greeting();
+        System.out.println("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
+        String[] questions = new String[HelpfulUtils.getQuantityRounds()];
+        String[] answers = new String[HelpfulUtils.getQuantityRounds()];
+
+        for (int i = 0; i < HelpfulUtils.getQuantityRounds(); i++) {
+            int random = HelpfulUtils.getRandomInt();
+            questions[i] = "Question: " + random;
+            answers[i] = isPrime(random) ? "yes" : "no";
         }
+        Engine.startGame(questions, answers);
     }
 }

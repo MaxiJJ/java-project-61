@@ -1,23 +1,27 @@
 package hexlet.code;
 
-import hexlet.code.games.Prime;
+import hexlet.code.games.GCDGame;
 import hexlet.code.games.Progression;
-import hexlet.code.games.GCD;
 import hexlet.code.games.Even;
 import hexlet.code.games.Calculate;
+import hexlet.code.games.Prime;
 
 import java.util.Scanner;
 
 public class App {
+
+    private static final int GREET = 1;
+    private static final int EVEN = 2;
+    private static final int CALC = 3;
+    private static final int GCD = 4;
+    private static final int PROGRESSION = 5;
+    private static final int PRIME = 6;
+
+    private static final int EXIT = 0;
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         boolean isWrongAnswer;
-        String greet = "Welcome to the Brain Games!";
-
-        final int caseCalc = 3;
-        final int caseGCD = 4;
-        final int caseProgression = 5;
-        final int casePrime = 6;
 
         do {
             isWrongAnswer = false;
@@ -30,36 +34,25 @@ public class App {
             System.out.println("6 - Prime");
             System.out.println("0 - Exit");
             switch (sc.nextInt()) {
-                case 1:
-                    System.out.println(greet);
-                    Cli.welcomeGamer();
+                case GREET:
+                    Greet.greeting();
                     break;
-                case 2:
-                    System.out.println(greet);
-                    Cli.welcomeGamer();
-                    Even.even();
+                case EVEN:
+                    Even.startGame();
                     break;
-                case caseCalc:
-                    System.out.println(greet);
-                    Cli.welcomeGamer();
-                    Calculate.calculate();
+                case CALC:
+                    Calculate.startGame();
                     break;
-                case caseGCD:
-                    System.out.println(greet);
-                    Cli.welcomeGamer();
-                    GCD.gcd();
+                case GCD:
+                    GCDGame.startGame();
                     break;
-                case caseProgression:
-                    System.out.println(greet);
-                    Cli.welcomeGamer();
-                    Progression.progression();
+                case PROGRESSION:
+                    Progression.startGame();
                     break;
-                case casePrime:
-                    System.out.println(greet);
-                    Cli.welcomeGamer();
-                    Prime.prime();
+                case PRIME:
+                    Prime.startGame();
                     break;
-                case 0:
+                case EXIT:
                     break;
 
                 default:

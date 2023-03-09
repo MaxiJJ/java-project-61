@@ -1,64 +1,63 @@
 package hexlet.code.games;
 
-import hexlet.code.Cli;
 import hexlet.code.Engine;
+import hexlet.code.Greet;
+import hexlet.code.HelpfulUtils;
+
 import java.util.Arrays;
-import java.util.Scanner;
+import java.util.Random;
 
 public class Progression {
-    public static void progression() {
 
-        Scanner scanner = new Scanner(System.in);
-        int correctAnswer = 0;
+    private static final int ARRAY = 10;
 
-        System.out.println("What number is missing in the progression?");
+    public static int[] getSequence() {
+        int diff = getRandomInt(ARRAY);
+        if (diff == 0) {
+            diff = diff + 1;
+        }
 
-        for (int i = 0; i < Engine.getCountForWin(); i++) {
-
-            int firstNumberOfProgression = (int) (Math.random() * Engine.RANGE_OF_RANDOM_EVEN_AND_PROGRESSION);
-            int stepProgression = (int) (1 + Math.random() * Engine.RANGE_OF_RANDOM_EVEN_AND_PROGRESSION);
-            int amountElementsOfProgression = (int) (Engine.RANGE_OF_RANDOM_PROGRESSION
-                    + Math.random() * Engine.RANGE_OF_RANDOM_PROGRESSION);
-
-            int[] arrayProgression = new int[amountElementsOfProgression];
-
-            arrayProgression[0] = firstNumberOfProgression;
-
-            String[] array = new String[arrayProgression.length];
-
-            for (int j = 1; j < arrayProgression.length; j++) {
-                firstNumberOfProgression = firstNumberOfProgression + stepProgression;
-                arrayProgression[j] = firstNumberOfProgression;
-            }
-
-            for (int j = 0; j < array.length; j++) {
-                array[j] = String.valueOf(arrayProgression[j]);
-            }
-
-            int random = (int) (array.length * Math.random());
-            String hiddenElement = array[random];
-
-            array[random] = hiddenElement.replace(hiddenElement, "..");
-
-            System.out.println("Question: " + Arrays.toString(array).replace("[", "")
-                    .replace("]", "").replaceAll(",", ""));
-
-            String sc = scanner.nextLine();
-
-            System.out.println("Your answer: " + sc);
-
-            if (hiddenElement.equals(sc)) {
-                System.out.println("Correct!");
-                correctAnswer++;
-            } else {
-                System.out.println("'" + sc + "'" + " is wrong answer ;(. Correct answer was "
-                        + "'" + hiddenElement + "'");
-                System.out.println("Let's try again, " + Cli.getName() + "!");
-                break;
+        int[] sequence = new int[ARRAY];
+        sequence[0] = HelpfulUtils.getRandomInt();
+        char operation = HelpfulUtils.getRandomOperation("+-*");
+        for (int i = 0; i < sequence.length; i++) {
+            if (operation == '-') {
+                sequence[i] = sequence[i - 1] - diff;
+            } else if (operation == '+') {
+                sequence[i] = sequence[i - 1] + diff;
             }
         }
-        if (Engine.getCountForWin() == correctAnswer) {
-            Engine.endGame();
-        }
+        return sequence;
     }
+
+    public static int getRandomInt(int limit) {
+        Random randomInt = new Random();
+        return randomInt.nextInt(limit);
+    }
+
+    public static String sequenceWithX(int[] sequence, int x) {
+        String toReplace = " " + sequence[x] + " ";
+        String numbers = Arrays.toString(sequence);
+        numbers = numbers.replace(",", "")
+                .replace("[", " ")
+                .replace("]", " ")
+                .replace(toReplace, " .. ");
+        return ("Question" + numbers);
+    }
+
+    public static void startGame() {
+        Greet.greeting();
+        System.out.println("What number is missing in the progression?");
+        String[] questions = new String[HelpfulUtils.getQuantityRounds()];
+        String[] answers = new String[HelpfulUtils.getQuantityRounds()];
+
+        for (int i = 0; i < HelpfulUtils.getQuantityRounds(); i++) {
+            int[] seq = getSequence();
+            int x = Math.abs(getRandomInt(seq.length - 1));
+            questions[i] = sequenceWithX(seq, x);
+            answers[i] = Integer.toString(seq[x]);
+        }
+        Engine.startGame(questions, answers);
+    }
+
 }

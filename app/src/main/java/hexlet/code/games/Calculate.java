@@ -1,69 +1,38 @@
 package hexlet.code.games;
 
-import hexlet.code.Cli;
 import hexlet.code.Engine;
-
-import java.util.Random;
-import java.util.Scanner;
+import hexlet.code.Greet;
+import hexlet.code.HelpfulUtils;
 
 public class Calculate {
 
-    private static final Random RANDOM_GENERATOR = new Random();
+    public static String calc(int number1, int number2, char operation) {
+        int result = 0;
 
-    public static void calculate() {
+        if (operation == '+') {
+            result = number1 + number2;
+        } else if (operation == '-') {
+            result = number1 - number2;
+        } else if (operation == '*') {
+            result = number1 * number2;
+        }
+        return Integer.toString(result);
+    }
 
-        Scanner scanner = new Scanner(System.in);
-
-        int correctAnswer = 0;
-
-
+    public static void startGame() {
+        Greet.greeting();
         System.out.println("What is the result of the expression?");
+        String[] questions = new String[HelpfulUtils.getQuantityRounds()];
+        String[] answers = new String[HelpfulUtils.getQuantityRounds()];
 
-        for (int i = 0; i < Engine.getCountForWin(); i++) {
-            int a = (int) (Math.random() * Engine.RANGE_OF_RANDOM_CALC);
-            int b = (int) (Math.random() * Engine.RANGE_OF_RANDOM_CALC);
-            String operation = String.valueOf(Calculate.getRandomGenerator());
-
-            System.out.println("Question: " + a + " " + operation + " " + b);
-            int sc = scanner.nextInt();
-
-            if (operation.equals("+") && a + b == sc) {
-                System.out.println("Your answer: " + sc);
-                System.out.println("Correct!");
-                correctAnswer++;
-            } else if (operation.equals("-") && a - b == sc) {
-                System.out.println("Your answer: " + sc);
-                System.out.println("Correct!");
-                correctAnswer++;
-            } else if (operation.equals("*") && a * b == sc) {
-                System.out.println("Your answer: " + sc);
-                System.out.println("Correct!");
-                correctAnswer++;
-            } else if (operation.equals("+") && a + b != sc) {
-                System.out.println("Your answer: " + sc);
-                System.out.println("'" + sc + "'" + " is wrong answer ;(. Correct answer was " + "'" + (a + b) + "'");
-                System.out.println("Let's try again, " + Cli.getName() + "!");
-                break;
-            } else if (operation.equals("-") && a - b != sc) {
-                System.out.println("Your answer: " + sc);
-                System.out.println("'" + sc + "'" + " is wrong answer ;(. Correct answer was " + "'" + (a - b) + "'");
-                System.out.println("Let's try again, " + Cli.getName() + "!");
-                break;
-            } else if (operation.equals("*") && a * b != sc) {
-                System.out.println("Your answer: " + sc);
-                System.out.println("'" + sc + "'" + " is wrong answer ;(. Correct answer was " + "'" + (a * b) + "'");
-                System.out.println("Let's try again, " + Cli.getName() + "!");
-                break;
-            }
+        for (int i = 0; i < HelpfulUtils.getQuantityRounds(); i++) {
+            int number1 = HelpfulUtils.getRandomInt();
+            int number2 = HelpfulUtils.getRandomInt();
+            char operation = HelpfulUtils.getRandomOperation("+-*");
+            questions[i] = "Question: " + number1 + " " + operation + " " + number2;
+            answers[i] = calc(number1, number2, operation);
         }
-
-        if (Engine.getCountForWin() == correctAnswer) {
-            Engine.endGame();
-        }
+        Engine.startGame(questions, answers);
     }
 
-    public static char getRandomGenerator() {
-        String operators = "+-*";
-        return operators.charAt(RANDOM_GENERATOR.nextInt(operators.length()));
-    }
 }

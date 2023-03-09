@@ -11,11 +11,11 @@ public class Prime {
         }
 
         for (int i = 2; i <= num / 2; i++) {
-            if ((num % 2) == 0) {
+            if ((num % i) == 0) {
                 return false;
             }
         }
-        return false;
+        return true;
     }
 
     public static void startGame() {
@@ -23,7 +23,7 @@ public class Prime {
 
         for (int i = 0; i < Engine.getQuantityRounds(); i++) {
             int random = HelpfulUtils.getRandomInt(HelpfulUtils.getDefaultMax());
-            questionsAndAnswers[i][0] = "Question: " + random;
+            questionsAndAnswers[i][0] = "" + random;
             questionsAndAnswers[i][1] = isPrime(random) ? "yes" : "no";
         }
         String description = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";

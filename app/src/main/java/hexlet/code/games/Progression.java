@@ -37,7 +37,7 @@ public class Progression {
             int diff = HelpfulUtils.getRandomInt(ELEMENTS_IN_PROGRESSION);
             diff = (diff == 0) ? diff : (diff + 1);
             int numberOfStarting = HelpfulUtils.getRandomInt(HelpfulUtils.getDefaultMax());
-            char operation = HelpfulUtils.getRandomOperation("+-*");
+            char operation = HelpfulUtils.getRandomOperation("+-");
             String[] sequence = getSequence(numberOfStarting, diff, operation, ELEMENTS_IN_PROGRESSION);
             int hiddenElement = Math.abs(HelpfulUtils.getRandomInt(sequence.length - 1));
             questionsAndAnswers[i][1] = sequence[hiddenElement];

@@ -31,9 +31,9 @@ public class Progression {
     }
 
     public static void startGame() {
-        String[][] questionsAndAnswers = new String[Engine.getQuantityRounds()][Engine.getOneQuestionOneAnswer()];
+        String[][] questionsAndAnswers = new String[Engine.QUANTITY_ROUNDS][Engine.ONE_QUESTION_ONE_ANSWER];
 
-        for (int i = 0; i < Engine.getQuantityRounds(); i++) {
+        for (int i = 0; i < Engine.QUANTITY_ROUNDS; i++) {
             int diff = HelpfulUtils.getRandomInt(ELEMENTS_IN_PROGRESSION);
             diff = (diff == 0) ? diff : (diff + 1);
             int numberOfStarting = HelpfulUtils.getRandomInt(HelpfulUtils.getDefaultMax());

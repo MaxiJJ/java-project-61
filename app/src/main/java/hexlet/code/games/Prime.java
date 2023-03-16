@@ -19,9 +19,9 @@ public class Prime {
     }
 
     public static void startGame() {
-        String[][] questionsAndAnswers = new String[Engine.getQuantityRounds()][Engine.getOneQuestionOneAnswer()];
+        String[][] questionsAndAnswers = new String[Engine.QUANTITY_ROUNDS][Engine.ONE_QUESTION_ONE_ANSWER];
 
-        for (int i = 0; i < Engine.getQuantityRounds(); i++) {
+        for (int i = 0; i < Engine.QUANTITY_ROUNDS; i++) {
             int random = HelpfulUtils.getRandomInt(HelpfulUtils.getDefaultMax());
             questionsAndAnswers[i][0] = "" + random;
             questionsAndAnswers[i][1] = isPrime(random) ? "yes" : "no";

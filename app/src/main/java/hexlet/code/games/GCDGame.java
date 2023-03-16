@@ -13,9 +13,9 @@ public class GCDGame {
     }
 
     public static void startGame() {
-        String[][] questionsAndAnswers = new String[Engine.getQuantityRounds()][Engine.getOneQuestionOneAnswer()];
+        String[][] questionsAndAnswers = new String[Engine.QUANTITY_ROUNDS][Engine.ONE_QUESTION_ONE_ANSWER];
 
-        for (int i = 0; i < Engine.getQuantityRounds(); i++) {
+        for (int i = 0; i < Engine.QUANTITY_ROUNDS; i++) {
             int number1 = HelpfulUtils.getRandomInt(HelpfulUtils.getDefaultMax());
             int number2 = HelpfulUtils.getRandomInt(HelpfulUtils.getDefaultMax());
             questionsAndAnswers[i][0] = "Question: " + number1 + " " + number2;

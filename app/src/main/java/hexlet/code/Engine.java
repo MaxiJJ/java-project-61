@@ -4,17 +4,9 @@ import java.util.Scanner;
 
 public class Engine {
 
-    private static final int QUANTITY_ROUNDS = 3;
+    public static final int QUANTITY_ROUNDS = 3;
 
-    private static final int ONE_QUESTION_ONE_ANSWER = 2;
-
-    public static int getQuantityRounds() {
-        return QUANTITY_ROUNDS;
-    }
-
-    public static int getOneQuestionOneAnswer() {
-        return ONE_QUESTION_ONE_ANSWER;
-    }
+    public static final int ONE_QUESTION_ONE_ANSWER = 2;
 
     public static int startGame(String[][] questionsAndAnswers, String description) {
         Scanner scanner = new Scanner(System.in);
@@ -23,9 +15,9 @@ public class Engine {
         System.out.println("Hello, " + username + "!");
         System.out.println(description);
         scanner = new Scanner(System.in);
-        String[] answers = new String[getQuantityRounds()];
+        String[] answers = new String[QUANTITY_ROUNDS];
 
-        for (int i = 0; i < getQuantityRounds(); i++) {
+        for (int i = 0; i < QUANTITY_ROUNDS; i++) {
             System.out.println("Question: " + questionsAndAnswers[i][0]);
             System.out.println("Your answer: ");
             answers[i] = scanner.nextLine();
